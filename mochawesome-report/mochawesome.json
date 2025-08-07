@@ -1,0 +1,139 @@
+{
+  "stats": {
+    "suites": 2,
+    "tests": 2,
+    "passes": 2,
+    "pending": 0,
+    "failures": 0,
+    "start": "2025-08-07T13:56:09.966Z",
+    "end": "2025-08-07T13:56:18.621Z",
+    "duration": 8655,
+    "testsRegistered": 2,
+    "passPercent": 100,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "eea359ca-fa95-44d2-b955-d5244b1ff541",
+      "title": "",
+      "fullFile": "",
+      "file": "",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "64ff9255-6bc6-4d16-9537-d73c8d3054bb",
+          "title": "Automation test login saucedemo menggunakan chrome",
+          "fullFile": "/Users/pardede/Downloads/Mini Bootcamp QA/Materi 9 - Web UI Automation Fundamental/sesi9_Web-UI-Automation_Yoel/saucedemo-test/login_test.js",
+          "file": "/saucedemo-test/login_test.js",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "Berhasil login dengan kredensial yang valid",
+              "fullTitle": "Automation test login saucedemo menggunakan chrome Berhasil login dengan kredensial yang valid",
+              "timedOut": false,
+              "duration": 3552,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "Options = new chrome.Options();\nOptions.addArguments('--incognito'); //option ke chrome supaya gak ada popup passwordnya\ndriver = await new Builder().forBrowser('chrome').build();\nawait driver.get('https://www.saucedemo.com');\n//isi kredential login\nlet inputUsername = await driver.findElement(By.xpath('//*[@data-test=\"username\"]'))\nlet inputPassword = await driver.findElement(By.xpath('//*[@data-test=\"password\"]'))\nlet buttonLogin = await driver.findElement(By.xpath('//*[@data-test=\"login-button\"]'))\nawait inputUsername.sendKeys('standard_user')\nawait inputPassword.sendKeys('secret_sauce')\nawait buttonLogin.click()\n// assert: text dalam element benar\nlet textAppLogo = await driver.findElement(By.className('app_logo'))\nlet logotext = await textAppLogo.getText()\nassert.strictEqual(logotext, 'Swag Labs')\n\n//assert untuk cek apakah sudah berhasil login menggunakan url\nlet currentUrl = await driver.getCurrentUrl();\nassert.strictEqual(currentUrl, 'https://www.saucedemo.com/inventory.html');\n\n       // await driver.sleep(1700);\nawait driver.quit();",
+              "err": {},
+              "uuid": "5fab260a-73eb-4881-af0c-e175b5a37d00",
+              "parentUUID": "64ff9255-6bc6-4d16-9537-d73c8d3054bb",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "5fab260a-73eb-4881-af0c-e175b5a37d00"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 3552,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 30000
+        },
+        {
+          "uuid": "d4aa17a7-0b36-4762-9522-b6c0fee304ea",
+          "title": "Automation test sort produk A-Z setelah login saucedemo menggunakan chrome",
+          "fullFile": "/Users/pardede/Downloads/Mini Bootcamp QA/Materi 9 - Web UI Automation Fundamental/sesi9_Web-UI-Automation_Yoel/saucedemo-test/sort_test.js",
+          "file": "/saucedemo-test/sort_test.js",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "Sort produk A-Z setelah login saucedemo",
+              "fullTitle": "Automation test sort produk A-Z setelah login saucedemo menggunakan chrome Sort produk A-Z setelah login saucedemo",
+              "timedOut": false,
+              "duration": 5093,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "Options = new chrome.Options();\nOptions.addArguments('--incognito'); //option ke chrome supaya gak ada popup passwordnya\ndriver = await new Builder().forBrowser('chrome').build();\nawait driver.get('https://www.saucedemo.com');\n//isi kredential login\nlet inputUsername = await driver.findElement(By.xpath('//*[@data-test=\"username\"]'));\nlet inputPassword = await driver.findElement(By.xpath('//*[@data-test=\"password\"]'));\nlet buttonLogin = await driver.findElement(By.xpath('//*[@data-test=\"login-button\"]'));\nawait inputUsername.sendKeys('standard_user');\nawait inputPassword.sendKeys('secret_sauce');\nawait buttonLogin.click();\n// assert: text dalam element benar\nlet textAppLogo = await driver.findElement(By.className('app_logo'))\nlet logotext = await textAppLogo.getText()\nassert.strictEqual(logotext, 'Swag Labs')\n\n//assert untuk cek apakah sudah berhasil login menggunakan url\nlet currentUrl = await driver.getCurrentUrl();\nassert.strictEqual(currentUrl, 'https://www.saucedemo.com/inventory.html');\n\n// //assert dropdown sort A-Z\nlet sortDropdown = await driver.findElement(By.className('product_sort_container'));\nawait sortDropdown.click();\n       await driver.sleep(1700);\n\n//cek apakah sudah sort A-Z\nlet option = await driver.findElement(By.xpath('//option[text()=\"Name (A to Z)\"]'));\nawait option.click();\n\n       // await driver.sleep(1700);\nawait driver.quit();",
+              "err": {},
+              "uuid": "2f13eb58-c9d6-4faa-9f06-fe18cb6c2d69",
+              "parentUUID": "d4aa17a7-0b36-4762-9522-b6c0fee304ea",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "2f13eb58-c9d6-4faa-9f06-fe18cb6c2d69"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 5093,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 30000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 60000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "11.7.1"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": true,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.3"
+    },
+    "marge": {
+      "options": null,
+      "version": "6.2.0"
+    }
+  }
+}
